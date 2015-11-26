@@ -87,9 +87,22 @@ static const NSInteger kDefaultGradeCount = 5;
         // Use the current month by default
         _graphMonth = [NSDate date];
     }
-    
-    _cellSpacing = floor(CGRectGetWidth(self.frame) / 20);
+
+    float width;
+    if (CGRectGetWidth(self.frame) == 0 && self.translatesAutoresizingMaskIntoConstraints == NO) {
+      CGRect screenSize = [[UIScreen mainScreen] bounds];
+      width = screenSize.size.width;
+    } else {
+      width = CGRectGetWidth(self.frame);
+    }
+
+    _cellSpacing = floor(width / 20);
     _cellSize = _cellSpacing * 2;
+}
+
+- (void) layoutSubviews{
+  [super layoutSubviews];
+  [self reloadData];
 }
 
 - (void)reloadData {
