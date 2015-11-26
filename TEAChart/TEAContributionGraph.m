@@ -92,6 +92,11 @@ static const NSInteger kDefaultGradeCount = 5;
     _cellSize = _cellSpacing * 2;
 }
 
+- (void)reloadData {
+  [self loadDefaults];
+  [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];

@@ -69,4 +69,6 @@
 
 @property (nonatomic, weak) IBOutlet id<TEAContributionGraphDataSource> delegate;
 
+- (void)reloadData;
+
 @end
